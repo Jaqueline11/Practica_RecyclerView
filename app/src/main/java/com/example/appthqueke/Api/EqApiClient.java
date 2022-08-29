@@ -6,6 +6,7 @@ import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Retrofit;
+import retrofit2.converter.moshi.MoshiConverterFactory;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
@@ -23,7 +24,6 @@ public class EqApiClient {
     private EqApiClient(){
 
     }
-
     //interfaz para generar el servicio
     public interface EqService {
         @GET("all_hour.geojson")
@@ -32,7 +32,8 @@ public class EqApiClient {
 
     private final Retrofit retrofit = new Retrofit.Builder()
             .baseUrl("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/")
-            .addConverterFactory(ScalarsConverterFactory.create())
+            .addConverterFactory(ScalarsConverterFactory.create()) //Conversion Scalars
+            //.addConverterFactory(MoshiConverterFactory.create()) //Conversion Moshi
             .build();
 
 

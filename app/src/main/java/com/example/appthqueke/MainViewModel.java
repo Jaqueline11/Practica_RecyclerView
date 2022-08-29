@@ -59,7 +59,6 @@ public class MainViewModel extends ViewModel {
     //
     private List<Earthquake> parseEarthquake(String responseString){
         ArrayList<Earthquake> listaeq=new ArrayList<>();
-
         try {
             JSONObject  jsonResponse = new JSONObject(responseString);
             JSONArray featuresJSONArray= jsonResponse.getJSONArray("features");
@@ -80,13 +79,11 @@ public class MainViewModel extends ViewModel {
                 double latitude = coordinateJSONARRAY.getDouble(1);
 
                 Earthquake earthquake= new Earthquake(id,place,mag,time,latitude,longitude);
-
                 listaeq.add(earthquake);
             }
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
         return listaeq;
     }
     private String obtieneDosDecimales(double valor){
